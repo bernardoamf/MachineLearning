@@ -26,13 +26,13 @@ h=zeros(size(X,2));
 %grad = X * theta'
 
 %h = 1 ./ (1 .+ e .^ -(X * theta));
-h = sigmoid(X * theta)
-s_blue = sum(y .* log(h))
-s_orange = sum((1 - y) .* log(h))
-m = size(y,1)
-divm = (1/m)
+h = sigmoid(X * theta);
+s_blue = sum(y .* log(h));
+s_orange = sum((1 - y) .* log(1-h));
+m = size(y,1);
 
-J = -(1/m) *  (s_blue + s_orange)
+
+J = -(1/m) *  (s_blue + s_orange);
 
 	
 
