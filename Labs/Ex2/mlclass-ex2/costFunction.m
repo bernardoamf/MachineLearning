@@ -34,6 +34,8 @@ m = size(y,1);
 
 J = -(1/m) *  (s_blue + s_orange);
 
+grad = ((1/m) * ((sigmoid(X * theta) - y)' * X))';
+
 	
 
 
