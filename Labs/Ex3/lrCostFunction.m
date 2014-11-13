@@ -46,7 +46,7 @@ grad = zeros(size(theta));
 
 
 % =============================================================
+[J, grad]  = costFunctionReg(theta, X, y, lambda);
 
-grad = grad(:);
 
 end
