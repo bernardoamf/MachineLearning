@@ -29,8 +29,6 @@ m = size(X, 1);
 J = 0;
 Theta1_grad = zeros(size(Theta1));
 Theta2_grad = zeros(size(Theta2));
-columnsTheta1 = size(Theta1,2);
-columnsTheta2 = size(Theta2,2);
 
 %Create the y matrix
 ymatrix = eye(num_labels)(y,:);
@@ -81,13 +79,6 @@ m = size(y,1);
 
 
 J = sum(-(1/m) *  (s_blue + s_orange));
-
-% now add the regularization
-
-Theta1Reg = sum(sum(Theta1(:,2:columnsTheta1).^2));
-Theta2Reg = sum(sum(Theta2(:,2:columnsTheta2).^2));
-
-J = J + (lambda / (2*m)) * (Theta1Reg + Theta2Reg)
 
 
 
