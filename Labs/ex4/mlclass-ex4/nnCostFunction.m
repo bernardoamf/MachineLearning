@@ -77,7 +77,6 @@ a3 = sigmoid(z3);
 
 s_blue = sum(ymatrix .* log(a3));
 s_orange = sum((1 - ymatrix) .* log(1-a3));
-m = size(y,1);
 
 
 J = sum(-(1/m) *  (s_blue + s_orange));
@@ -89,19 +88,21 @@ Theta2Reg = sum(sum(Theta2(:,2:columnsTheta2).^2));
 
 J = J + (lambda / (2*m)) * (Theta1Reg + Theta2Reg)
 
+% Part 2 - Backpropagation
+deltaL2 = zeros(1,size(Theta1,2));
+deltaL3 = zeros(1,num_labels);
 
+deltaL3 = a3 - ymatrix;
+deltaL2 = deltaL3 * Theta2(:,2:end) .* sigmoidGradient(z2);
 
+lambdaTheta2 = Theta2 *(lambda/m);
+lambdaTheta2(:,1) = 0;
 
+lambdaTheta1 = Theta1 *(lambda/m);
+lambdaTheta1(:,1) = 0;
 
-
-
-
-
-
-
-
-
-
+Theta2_grad = (deltaL3' * a2)/m + lambdaTheta2;
+Theta1_grad = (deltaL2' * a1)/m + lambdaTheta1;
 
 
 
